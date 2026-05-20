@@ -11,13 +11,18 @@ import {
   Menu,
   X,
   QrCode,
+  CheckSquare,
+  UserCircle,
 } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/approvals', label: 'Approvals', icon: CheckSquare },
   { href: '/properties', label: 'Properties', icon: Building2 },
+  { href: '/qr', label: 'QR Codes', icon: QrCode },
   { href: '/brokers', label: 'Brokers', icon: Users },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },
+  { href: '/profile', label: 'Profile', icon: UserCircle },
 ];
 
 export default function Sidebar() {
@@ -40,7 +45,8 @@ export default function Sidebar() {
       {/* Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1">
         {navLinks.map(({ href, label, icon: Icon }) => {
-          const isActive = pathname === href;
+          const isActive =
+            href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`);
           return (
             <Link
               key={href}

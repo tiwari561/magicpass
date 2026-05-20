@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, ChevronRight, Plus, X, Building2 } from 'lucide-react';
+import Link from 'next/link';
+import { ChevronDown, ChevronRight, Plus, X, Building2, ExternalLink } from 'lucide-react';
 import FloorBadge from '@/components/FloorBadge';
 import { MOCK_PROPERTIES, FloorStatus, Property } from '@/lib/mockData';
 
@@ -158,7 +159,14 @@ export default function PropertiesPage() {
                             <Building2 size={14} className="text-primary" />
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900">{property.name}</p>
+                            <Link
+                              href={`/properties/${property.id}`}
+                              onClick={(e) => e.stopPropagation()}
+                              className="font-semibold text-gray-900 hover:text-primary inline-flex items-center gap-1"
+                            >
+                              {property.name}
+                              <ExternalLink size={12} className="text-gray-400" />
+                            </Link>
                             <p className="text-xs text-gray-400 sm:hidden">{property.locality}</p>
                           </div>
                         </div>
