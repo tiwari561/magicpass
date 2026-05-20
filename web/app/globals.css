@@ -1,12 +1,64 @@
+/* ─── Fonts ────────────────────────────────────────────────── */
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design tokens ────────────────────────────────────────── */
+:root {
+  --mp-sandstone:    #F9F7F4;
+  --mp-bone:         #EBE7E0;
+  --mp-ink:          #1A1D1C;
+  --mp-slate:        #525754;
+  --mp-green:        #00D084;
+  --mp-clay:         #C84C31;
+  --mp-danger:       #E03E3E;
+  --mp-hairline:     rgba(26,29,28,0.12);
+  --mp-hairline-soft:rgba(26,29,28,0.06);
+}
+
+/* ─── Base ─────────────────────────────────────────────────── */
 @layer base {
-  * {
-    box-sizing: border-box;
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
+
   body {
-    @apply bg-gray-50 text-gray-900;
+    font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    background-color: #F9F7F4;
+    color: #1A1D1C;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cabinet Grotesk', ui-sans-serif, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    color: #1A1D1C;
   }
 }
+
+/* ─── Animations (from brand sheet) ───────────────────────── */
+@keyframes mp-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+.mp-rise { animation: mp-rise .45s cubic-bezier(.2,.7,.2,1) both; }
+
+@keyframes mp-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+.mp-pulse { animation: mp-pulse 1.6s ease-in-out infinite; }
+
+@keyframes mp-pulse-ring {
+  0%   { transform: scale(0.7); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0;   }
+}
+.mp-pulse-ring { animation: mp-pulse-ring 1.8s ease-out infinite; }

@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900 antialiased">
+      <body className="bg-sandstone text-ink antialiased font-body">
         <div className="flex min-h-screen">
           <Sidebar />
           {/* Main content — offset on mobile for fixed top bar */}
