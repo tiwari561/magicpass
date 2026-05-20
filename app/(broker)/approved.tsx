@@ -9,11 +9,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Radius, FontSize } from '@/constants/theme';
 import FloorRow from '@/components/FloorRow';
 import { MOCK_VISITS, MOCK_PROPERTIES } from '@/constants/mockData';
+import { useApprovalSoundOnMount } from '@/components/useApprovalSound';
 
 export default function ApprovedScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { visitId } = useLocalSearchParams<{ visitId: string }>();
+  useApprovalSoundOnMount();
 
   const visit = MOCK_VISITS.find(v => v.id === visitId) ?? MOCK_VISITS[0];
   const property = MOCK_PROPERTIES.find(p => p.id === visit.propertyId) ?? MOCK_PROPERTIES[0];

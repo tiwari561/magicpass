@@ -8,6 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Radius, FontSize } from '@/constants/theme';
 import FloorRow from '@/components/FloorRow';
 import { PENDING_APPROVALS, MOCK_PROPERTIES } from '@/constants/mockData';
+import { playApprovalSound } from '@/components/useApprovalSound';
 
 export default function ApprovalDetailScreen() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function ApprovalDetailScreen() {
   const property = MOCK_PROPERTIES[0];
 
   const handleApprove = () => {
+    playApprovalSound();
     setApproved(true);
     setTimeout(() => router.replace('/(builder)/(tabs)/home'), 1500);
   };
